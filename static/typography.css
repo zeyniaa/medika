@@ -1,0 +1,2 @@
+/* All typography is local: no third-party font requests or tracking. */
+@font-face{font-family:Inter;src:local("Inter");font-display:swap}

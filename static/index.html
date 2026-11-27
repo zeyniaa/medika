@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#0F766E">
+  <meta name="description" content="Tambahkan surat sakit untuk melihat hasil pemeriksaannya.">
+  <title>Medika · Periksa surat sakit</title>
+  <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="/static/app.js" defer></script>
+</head>
+<body>
+  <svg class="symbols" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9Z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7h.01"/></symbol>
+  </svg>
+  <header class="header">
+    <a class="brand" href="/" aria-label="Medika"><span class="brand-mark" aria-hidden="true">✚</span><span>medika<span class="brand-dot">.</span></span></a>
+    <span class="connection" id="connection" role="status"><span aria-hidden="true"></span><span id="connection-label">Menghubungkan…</span></span>
+  </header>
+  <main>
+    <div class="intro"><h1>Periksa surat sakit</h1><p>Tambahkan file untuk melihat hasilnya.</p></div>
+    <div class="connection-notice" id="connection-notice" hidden><p id="connection-message"></p><button class="text-button" id="check-connection" type="button">Coba lagi</button></div>
+    <div class="workspace">
+      <section class="panel upload-panel" aria-labelledby="upload-title">
+        <div class="panel-heading"><h2 id="upload-title">Dokumen</h2><span class="step-note">JPG · PNG · PDF</span></div>
+        <div class="upload-body">
+          <input type="file" id="file-input" accept="image/jpeg,image/png,application/pdf,.jpg,.jpeg,.png,.pdf" hidden>
+          <button class="dropzone" id="dropzone" type="button"><span class="upload-icon"><svg aria-hidden="true"><use href="#i-plus"/></svg></span><strong>Tambah file</strong><span>atau letakkan file di sini</span><small>Maks. 10 MB · PDF hingga 3 halaman</small></button>
+          <div class="file-preview" id="file-preview" hidden>
+            <div class="file-info"><svg aria-hidden="true"><use href="#i-file"/></svg><div><strong id="file-name"></strong><span id="file-size"></span></div><button class="text-button" id="change-file" type="button">Ganti file</button></div>
+            <div class="preview-media" id="preview-media"></div>
+          </div>
+        </div>
+      </section>
+      <section class="panel result-panel" aria-labelledby="result-title" aria-busy="false" id="result-panel">
+        <div class="panel-heading"><h2 id="result-title">Hasil pemeriksaan</h2><span class="result-badge" id="result-badge" hidden></span></div>
+        <div class="result-empty" id="result-empty"><span class="empty-icon"><svg aria-hidden="true"><use href="#i-file"/></svg></span><p>Hasil akan muncul di sini.</p></div>
+        <div class="result-progress" id="result-progress" role="status" hidden><span class="spinner" aria-hidden="true"></span><h3 id="progress-title">Mengunggah file…</h3><p id="progress-note">Tunggu sebentar.</p></div>
+        <div class="result-content" id="result-content" aria-live="polite" hidden></div>
+        <div class="retry-box" id="retry-box" hidden><p id="retry-message"></p><button class="button" id="retry-button" type="button">Coba lagi</button></div>
+      </section>
+    </div>
+    <footer>Pemeriksaan isi dokumen, bukan bukti keaslian.</footer>
+  </main>
+  <div class="toast" id="toast" role="alert" hidden></div>
+</body>
+</html>
